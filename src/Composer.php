@@ -54,7 +54,9 @@ class Composer
         shell_exec('php bin/console doctrine:migrations:sync-metadata-storage');
         shell_exec('php bin/console doctrine:migrations:migrate --no-interaction');
         shell_exec('php bin/console pimcore:cache:clear --no-interaction');
-        shell_exec('php bin/console pimcore:cache:warming --no-interaction');
+        if (!empty(getenv('DEVOPS_WARM_PIMCORE_CACHE_UP'))) {
+            shell_exec('php bin/console pimcore:cache:warming --no-interaction');
+        }
     }
 
     private static function installBundles(): void
