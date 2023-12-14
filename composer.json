@@ -3,9 +3,9 @@
   "description": "Pimcore DevOps Package",
   "type": "library",
   "require": {
-    "php": "^8.0",
+    "php": "~8.1.0 || ~8.2.0",
     "composer-plugin-api": "^2.2.0",
-    "pimcore/pimcore": "^10.5.0"
+    "pimcore/pimcore": "^10.5.0 || ^11.0.7"
   },
   "bin": [
     "bin/check-pimcore-build.php"
