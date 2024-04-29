@@ -70,7 +70,8 @@ class Composer
 
     public static function installPimcore()
     {
-        shell_exec('PIMCORE_CONFIGURATION_DIRECTORY=config/pimcore php pimcore-install --ignore-existing-config --skip-database-config --no-interaction');
+        $coreBundles = implode(',', getenv('AUTOINSTALL_BUNDLES') ?? []);
+        shell_exec("PIMCORE_CONFIGURATION_DIRECTORY=config/pimcore php pimcore-install --skip-database-config --no-interaction --install-bundles=$coreBundles");
     }
 
     private static function rrmdir($dir)
